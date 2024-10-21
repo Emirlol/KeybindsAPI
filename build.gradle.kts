@@ -1,5 +1,6 @@
 plugins {
 	id("fabric-loom") version "1.8-SNAPSHOT"
+	`maven-publish`
 }
 
 repositories {
@@ -14,7 +15,7 @@ val modName = property("mod_name") as String
 val modId = property("mod_id") as String
 version = property("mod_version") as String
 group = property("maven_group") as String
-
+val archivesBaseName = project.property("archives_base_name") as String
 val fabricApiVersion = property("fabric_version") as String
 
 dependencies {
@@ -41,3 +42,18 @@ tasks {
 		}
 	}
 }
+
+java {
+	withSourcesJar()
+}
+
+publishing {
+	publications {
+		create<MavenPublication>("mavenJava") {
+			artifactId = archivesBaseName
+			from(components["java"])
+		}
+	}
+}
+
+
