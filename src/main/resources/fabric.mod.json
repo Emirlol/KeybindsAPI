@@ -1,8 +1,8 @@
 {
 	"schemaVersion": 1,
-	"id": "${mod_id}",
+	"id": "keybindingevents",
 	"version": "${version}",
-	"name": "${name}",
+	"name": "Keybinding Events",
 	"description": "A small keybindings API for Fabric that provides key press and release events.",
 	"authors": [
 		"Rime"
