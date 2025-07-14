@@ -7,7 +7,6 @@ repositories {
 	mavenCentral()
 }
 
-val modName = property("mod_name") as String
 val modId = property("mod_id") as String
 group = property("maven_group") as String
 version = property("version") as String

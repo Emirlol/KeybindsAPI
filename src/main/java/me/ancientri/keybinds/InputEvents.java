@@ -24,7 +24,7 @@ public final class InputEvents {
 	 * 		and {@link net.fabricmc.fabric.api.client.screen.v1.ScreenMouseEvents ScreenMouseEvents}.
 	 */
 	@NotNull
-	public static Event<OnInput> onPress(KeyBinding keyBinding) {
+	public static Event<OnInput> onPress(@NotNull KeyBinding keyBinding) {
 		Objects.requireNonNull(keyBinding, "KeyBinding cannot be null");
 
 		return KeyBindingExtensions.getExtensions(keyBinding).keybind_getOnPress();
@@ -38,7 +38,7 @@ public final class InputEvents {
 	 * 		and {@link net.fabricmc.fabric.api.client.screen.v1.ScreenMouseEvents ScreenMouseEvents}.
 	 */
 	@NotNull
-	public static Event<OnInput> onRelease(KeyBinding keyBinding) {
+	public static Event<OnInput> onRelease(@NotNull KeyBinding keyBinding) {
 		Objects.requireNonNull(keyBinding, "KeyBinding cannot be null");
 
 		return KeyBindingExtensions.getExtensions(keyBinding).keybind_getOnRelease();
