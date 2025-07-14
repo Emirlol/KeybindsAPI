@@ -1,11 +1,12 @@
-package me.lumiafk.keybinds;
+package me.ancientri.keybinds;
 
-import me.lumiafk.keybinds.interfaces.KeyBindingExtensions;
-import me.lumiafk.keybinds.interfaces.OnInput;
+import me.ancientri.keybinds.interfaces.KeyBindingExtensions;
+import me.ancientri.keybinds.interfaces.OnInput;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.event.Event;
 import net.minecraft.client.option.KeyBinding;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
@@ -16,12 +17,13 @@ public final class InputEvents {
 	//These 2 methods are essentially helper methods to get the events contained within the keybinding objects, which are mixin'd in.
 
 	/**
-	 * @param   keyBinding The keybinding to listen for.
-	 * @return  The event for that keybinding, which can be used to register callbacks.
+	 * @param keyBinding The keybinding to listen for.
+	 * @return The event for that keybinding, which can be used to register callbacks.
 	 * @apiNote This event is only fired when there isn't a screen open.
-	 *          For screen events, use fabric's {@link net.fabricmc.fabric.api.client.screen.v1.ScreenKeyboardEvents ScreenKeyboardEvents}
-	 *          and {@link net.fabricmc.fabric.api.client.screen.v1.ScreenMouseEvents ScreenMouseEvents}.
+	 * 		For screen events, use fabric's {@link net.fabricmc.fabric.api.client.screen.v1.ScreenKeyboardEvents ScreenKeyboardEvents}
+	 * 		and {@link net.fabricmc.fabric.api.client.screen.v1.ScreenMouseEvents ScreenMouseEvents}.
 	 */
+	@NotNull
 	public static Event<OnInput> onPress(KeyBinding keyBinding) {
 		Objects.requireNonNull(keyBinding, "KeyBinding cannot be null");
 
@@ -29,12 +31,13 @@ public final class InputEvents {
 	}
 
 	/**
-	 * @param   keyBinding The keybinding to listen for.
-	 * @return  The event for that keybinding, which can be used to register callbacks.
+	 * @param keyBinding The keybinding to listen for.
+	 * @return The event for that keybinding, which can be used to register callbacks.
 	 * @apiNote This event is only fired when there isn't a screen open.
-	 *          For screen events, use fabric's {@link net.fabricmc.fabric.api.client.screen.v1.ScreenKeyboardEvents ScreenKeyboardEvents}
-	 *          and {@link net.fabricmc.fabric.api.client.screen.v1.ScreenMouseEvents ScreenMouseEvents}.
+	 * 		For screen events, use fabric's {@link net.fabricmc.fabric.api.client.screen.v1.ScreenKeyboardEvents ScreenKeyboardEvents}
+	 * 		and {@link net.fabricmc.fabric.api.client.screen.v1.ScreenMouseEvents ScreenMouseEvents}.
 	 */
+	@NotNull
 	public static Event<OnInput> onRelease(KeyBinding keyBinding) {
 		Objects.requireNonNull(keyBinding, "KeyBinding cannot be null");
 

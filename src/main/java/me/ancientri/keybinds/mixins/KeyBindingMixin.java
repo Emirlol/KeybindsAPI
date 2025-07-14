@@ -1,11 +1,12 @@
-package me.lumiafk.keybinds.mixins;
+package me.ancientri.keybinds.mixins;
 
 import com.llamalad7.mixinextras.sugar.Local;
-import me.lumiafk.keybinds.interfaces.KeyBindingExtensions;
-import me.lumiafk.keybinds.interfaces.OnInput;
+import me.ancientri.keybinds.interfaces.KeyBindingExtensions;
+import me.ancientri.keybinds.interfaces.OnInput;
 import net.fabricmc.fabric.api.event.Event;
 import net.fabricmc.fabric.api.event.EventFactory;
 import net.minecraft.client.option.KeyBinding;
+import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
@@ -36,6 +37,7 @@ public abstract class KeyBindingMixin implements KeyBindingExtensions {
 	// The events are lazy-initialized via the 2 methods below, so there are no useless events for keybindings that have no event listeners.
 
 	@Override
+	@NotNull
 	public Event<OnInput> keybind_getOnPress() {
 		if (ON_PRESS == null) {
 			ON_PRESS = EventFactory.createArrayBacked(OnInput.class, callbacks -> () -> {
@@ -48,6 +50,7 @@ public abstract class KeyBindingMixin implements KeyBindingExtensions {
 	}
 
 	@Override
+	@NotNull
 	public Event<OnInput> keybind_getOnRelease() {
 		if (ON_RELEASE == null) {
 			ON_RELEASE = EventFactory.createArrayBacked(OnInput.class, callbacks -> () -> {

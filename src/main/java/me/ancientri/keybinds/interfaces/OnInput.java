@@ -1,4 +1,4 @@
-package me.lumiafk.keybinds.interfaces;
+package me.ancientri.keybinds.interfaces;
 
 @FunctionalInterface
 public interface OnInput {
