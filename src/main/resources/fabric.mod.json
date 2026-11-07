@@ -1,20 +1,20 @@
 {
 	"schemaVersion": 1,
-	"id": "keybindingevents",
+	"id": "${mod_id}",
 	"version": "${version}",
-	"name": "Keybinding Events",
+	"name": "${mod_name}",
 	"description": "A small keybindings API for Fabric that provides key press and release events.",
 	"authors": [
-		"Rime"
+		"RimeOrReason"
 	],
 	"license": "All-Rights-Reserved",
 	"environment": "client",
 	"mixins": [
-		"keybinds.mixins.json"
+		"keymapping-events.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=${loader_version}",
-		"fabric": "*",
+		"fabric-api": "*",
 		"minecraft": ">=${minecraft_version}"
 	}
 }

@@ -7,28 +7,34 @@ repositories {
 	mavenCentral()
 }
 
-val modId = property("mod_id") as String
-group = property("maven_group") as String
-version = property("version") as String
+object ModProperties {
+	const val MOD_ID = "keymapping-events"
+	const val MOD_NAME = "Keymapping Events"
+	const val MAVEN_GROUP = "org.rimeorreason"
+	const val VERSION = "1.1.0"
+}
+
+group = ModProperties.MAVEN_GROUP
+version = ModProperties.VERSION
 
 dependencies {
 	minecraft(libs.minecraft)
-	mappings(variantOf(libs.yarn) { classifier("v2") })
-	modImplementation(libs.fabricLoader)
-
-	modImplementation(libs.fabricApi)
+	implementation(libs.fabricLoader)
+	implementation(libs.fabricApi)
 }
 
 tasks {
 	processResources {
-		val props = mapOf(
-			"version" to version,
-			"minecraft_version" to libs.versions.minecraft.get(),
+		val properties = mapOf(
+			"mod_id" to ModProperties.MOD_ID,
+			"mod_name" to ModProperties.MOD_NAME,
+			"version" to project.version,
 			"loader_version" to libs.versions.fabricLoader.get(),
+			"minecraft_version" to libs.versions.minecraft.get()
 		)
-		inputs.properties(props)
+		inputs.properties(properties)
 		filesMatching("fabric.mod.json") {
-			expand(props)
+			expand(properties)
 		}
 	}
 	jar {
@@ -44,8 +50,8 @@ java {
 
 publishing {
 	repositories {
-		maven("https://ancientri.me/maven/releases") {
-			name = "AncientRime"
+		maven("https://maven.rimeorreason.org/releases") {
+			name = "RimeOrReasonReleases"
 			credentials(PasswordCredentials::class)
 			authentication {
 				create<BasicAuthentication>("basic")
@@ -54,7 +60,7 @@ publishing {
 	}
 	publications {
 		create<MavenPublication>("mavenJava") {
-			artifactId = modId
+			artifactId = ModProperties.MOD_ID
 			version = project.version as String
 			groupId = project.group as String
 			from(components["java"])
